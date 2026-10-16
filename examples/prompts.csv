@@ -1,0 +1,5 @@
+prompt,negative,seed,cfg,steps,width,height,tag
+"product shot of a ceramic coffee cup on a concrete table, soft window light, 85mm","blurry, text, watermark",1001,6.5,28,1024,1024,cup_hero
+"same ceramic cup, top-down flat lay with coffee beans, overcast light","blurry, text, watermark",1002,6.5,28,1024,1024,cup_flatlay
+"ceramic cup in a hand, morning kitchen, shallow depth of field","blurry, text, watermark, extra fingers",1003,6.0,30,832,1216,cup_lifestyle
+"wide shot of a minimalist cafe interior at dusk, warm practical lights","blurry, text, watermark",1004,,,1216,832,cafe_wide

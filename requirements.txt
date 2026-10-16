@@ -1,0 +1,2 @@
+# No extra runtime dependencies: everything used (torch, numpy, Pillow) ships with ComfyUI.
+# Tests only: pip install pytest

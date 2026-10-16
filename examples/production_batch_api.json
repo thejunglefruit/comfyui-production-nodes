@@ -1,0 +1,188 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "sd_xl_base_1.0.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "JungleFruit_PromptBatchCSV",
+    "inputs": {
+      "csv_path": "prompts.csv",
+      "csv_text": "",
+      "index": 0,
+      "on_overflow": "wrap",
+      "default_cfg": 7.0,
+      "default_steps": 20,
+      "default_width": 1024,
+      "default_height": 1024
+    },
+    "_meta": {
+      "title": "Prompt sheet (one row per run)"
+    }
+  },
+  "3": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": [
+        "2",
+        0
+      ],
+      "clip": [
+        "1",
+        1
+      ]
+    },
+    "_meta": {
+      "title": "Positive"
+    }
+  },
+  "4": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": [
+        "2",
+        1
+      ],
+      "clip": [
+        "1",
+        1
+      ]
+    },
+    "_meta": {
+      "title": "Negative"
+    }
+  },
+  "5": {
+    "class_type": "EmptyLatentImage",
+    "inputs": {
+      "width": [
+        "2",
+        5
+      ],
+      "height": [
+        "2",
+        6
+      ],
+      "batch_size": 4
+    }
+  },
+  "6": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "seed": [
+        "2",
+        2
+      ],
+      "steps": [
+        "2",
+        4
+      ],
+      "cfg": [
+        "2",
+        3
+      ],
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "positive": [
+        "3",
+        0
+      ],
+      "negative": [
+        "4",
+        0
+      ],
+      "latent_image": [
+        "5",
+        0
+      ],
+      "denoise": 1.0
+    }
+  },
+  "7": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "8": {
+    "class_type": "JungleFruit_QualityGate",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "min_sharpness": 50.0,
+      "min_brightness": 0.08,
+      "max_brightness": 0.92,
+      "max_clipped_highlights": 0.05,
+      "max_crushed_shadows": 0.05,
+      "min_contrast": 0.04,
+      "if_none_pass": "return_best"
+    }
+  },
+  "9": {
+    "class_type": "JungleFruit_ApplyCubeLUT",
+    "inputs": {
+      "image": [
+        "8",
+        0
+      ],
+      "lut_name": "teal_orange.cube",
+      "intensity": 0.75,
+      "lut_path": ""
+    }
+  },
+  "10": {
+    "class_type": "JungleFruit_RunManifest",
+    "inputs": {
+      "images": [
+        "9",
+        0
+      ],
+      "filename_prefix": "jf/batch",
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "2",
+        1
+      ],
+      "seed": [
+        "2",
+        2
+      ],
+      "tag": [
+        "2",
+        7
+      ],
+      "params": "sampler=euler\nscheduler=normal\nlut=teal_orange\nlut_intensity=0.75",
+      "include_graph": true,
+      "include_workflow": false
+    }
+  },
+  "11": {
+    "class_type": "PreviewImage",
+    "inputs": {
+      "images": [
+        "8",
+        1
+      ]
+    },
+    "_meta": {
+      "title": "Rejected frames"
+    }
+  }
+}
