@@ -141,3 +141,5 @@ runs each node once on synthetic data in a temporary folder.
 ## Licence
 
 GPL-3.0-or-later (see `LICENSE`).
+
+**Commercial licence.** If you want to use it in a closed product without the GPL obligations, a commercial licence is available: thejunglefruit@proton.me
