@@ -1,0 +1,5 @@
+# Kept out of the package published to the Comfy Registry (gitignore syntax)
+tests/
+scripts/
+.github/
+.gitignore
