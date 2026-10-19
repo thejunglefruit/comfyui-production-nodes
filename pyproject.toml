@@ -1,6 +1,6 @@
 [project]
 name = "comfyui-production-nodes"
-version = "1.0.0"
+version = "1.0.1"
 description = "Production nodes for ComfyUI: prompt sheets from CSV, a model-free quality gate, .cube LUT grading and provenance sidecars."
 authors = [{ name = "The Jungle Fruit", email = "thejunglefruit@proton.me" }]
 license = { text = "GPL-3.0-or-later" }
@@ -18,6 +18,7 @@ Repository = "https://github.com/thejunglefruit/comfyui-production-nodes"
 [tool.comfy]
 PublisherId = "thejunglefruit"
 DisplayName = "Production Nodes"
+Icon = "https://raw.githubusercontent.com/thejunglefruit/comfyui-production-nodes/main/docs/images/registry-icon.png"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
